@@ -56,6 +56,17 @@
         </clipPath>
       </defs>
       <!---->
+      <!--pearls-->
+      <g v-if="showPearls">
+        <circle cx="100" cy="352" r="15" fill="#595756" />
+        <circle cx="150" cy="350" r="15" fill="#595756" />
+        <circle cx="125" cy="330" r="15" fill="#595756" />
+        <circle cx="220" cy="345" r="15" fill="#595756" />
+        <circle cx="185" cy="350" r="15" fill="#595756" />
+        <circle cx="170" cy="315" r="15" fill="#595756" />
+        <circle cx="235" cy="320" r="15" fill="#595756" />
+        <circle cx="255" cy="350" r="15" fill="#595756" />
+      </g>
     </g>
     <path d="M268 1L217 234" stroke="#8FCCE7" stroke-width="8" />
   </svg>
@@ -73,6 +84,10 @@ export default {
       type: String,
       default: "",
     },
+    showPearls: {
+      type: Boolean,
+      default: false,
+    }
   },
   data() {
     return {
@@ -141,6 +156,19 @@ svg {
       y: 80;
       transition: 0.4s ease-out;
     }
+  }
+  circle {
+    animation: float 0.8s ease-in alternate infinite;
+    @for $i from 1 through 8 {
+      &:nth-of-type(#{$i}) {
+        animation-delay: 200ms * $i;
+      }
+    }
+  }
+}
+@keyframes float {
+  100% {
+    transform: translate(0, -4px);
   }
 }
 </style>
