@@ -7,6 +7,11 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
 </style>
