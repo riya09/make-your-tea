@@ -1,10 +1,19 @@
 <template>
-  
+  <div>
+    <Header/>
+    <div class="container">
+    </div>
+  </div>
 </template>
 
 <script>
+import Header from "@/components/global/Header.vue";
+
 export default {
-}
+  components: {
+    Header,
+  },
+};
 </script>
 
 <style lang="scss">
@@ -13,5 +22,10 @@ export default {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+}
+.container {
+  display: grid;
+  place-items: center;
+  padding: 20px 10px;
 }
 </style>
