@@ -57,7 +57,7 @@
       </defs>
       <!---->
       <!--pearls-->
-      <g v-if="showPearls">
+      <g v-if="pearl === 'add'">
         <circle cx="100" cy="352" r="15" fill="#595756" />
         <circle cx="150" cy="350" r="15" fill="#595756" />
         <circle cx="125" cy="330" r="15" fill="#595756" />
@@ -84,9 +84,9 @@ export default {
       type: String,
       default: "",
     },
-    showPearls: {
-      type: Boolean,
-      default: false,
+    pearl: {
+      type: String,
+      default: '',
     }
   },
   data() {
