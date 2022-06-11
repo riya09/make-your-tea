@@ -1,5 +1,5 @@
 <template>
-  <ul :style="{display: displayType}">
+  <ul>
     <li
      v-for="option in options"
      :key="option.type"
@@ -25,10 +25,6 @@ export default {
     options: {
       type: Array,
       default: () => ([]),
-    },
-    displayType: {
-      type: String,
-      default: 'block',
     },
     chosenOption: {
       type: String,
