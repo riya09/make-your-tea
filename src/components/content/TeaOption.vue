@@ -54,8 +54,10 @@ export default {
 <style lang="scss" scoped>
 ul {
   list-style: none;
-  margin: 50px 0 10px;
+  margin: 10px 0;
   padding: 0;
+  width: 120px;
+  max-width: 100%;
   li {
     input {
       display: none;
@@ -68,10 +70,7 @@ ul {
       color: #f86f97;
       transition: background 0.25s ease-out;
       font-size: 12px;
-      width: 120px;
-      max-width: 100%;
       border: 1px solid #f86f97;
-      width: 100%;
       border-radius: 5px;
       text-align: center;
     }
