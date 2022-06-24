@@ -2,16 +2,19 @@
   <div>
     <Header/>
     <div class="container">
+      <Container/>
     </div>
   </div>
 </template>
 
 <script>
 import Header from "@/components/global/Header.vue"
+import Container from "@/components/content/Container.vue"
 
 export default {
   components: {
     Header,
+    Container,
   },
 }
 </script>
