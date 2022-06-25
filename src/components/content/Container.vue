@@ -1,34 +1,38 @@
 <template>
-  <div class="tea-container">
-    <TeaCup
-      :tea="teaType"
-      :flavor="teaFlavor"
-      :pearl="pearl" />
-    <div class="stepper">
-      <span v-if="teaType" @click="step = 1">{{ teaType }}</span>
-      <span v-if="teaFlavor" @click="step = 2">{{ teaFlavor }}</span>
-      <span v-if="pearl" @click="step = 3">
-      {{ pearl === 'add' ? 'Pearls' : 'No Pearls' }}
-      </span>
+  <div class="container">
+    <div class="tea-container">
+      <div class="cup-wrapper">
+        <TeaCup
+          :tea="teaType"
+          :flavor="teaFlavor"
+          :pearl="pearl" />
+      </div>
+      <div class="option-wrapper">
+        <TeaOption
+          v-if="step === 1"
+          header-text="Select tea"
+          :options="teaOptions"
+          :chosen-option="teaType"
+          alignment="column"
+          @getSelected="getSelectedTea"
+        />
+        <TeaOption
+          v-if="step === 2"
+          header-text="Select flavor"
+          :options="teaFlavors"
+          :chosen-option="teaFlavor"
+          @getSelected="getSelectedFlavor"
+        />
+        <TeaOption
+          v-if="step === 3"
+          header-text="Want pearls?"
+          alignment="column"
+          :options="teaPearls"
+          :chosen-option="pearl"
+          @getSelected="getSelectedPearl"
+        />
+      </div>
     </div>
-    <TeaOption
-      v-if="step === 1"
-      :options="teaOptions"
-      :chosen-option="teaType"
-      @getSelected="getSelectedTea"
-    />
-    <TeaOption
-      v-if="step === 2"
-      :options="teaFlavors"
-      :chosen-option="teaFlavor"
-      @getSelected="getSelectedFlavor"
-    />
-    <TeaOption
-      v-if="step === 3"
-      :options="teaPearls"
-      :chosen-option="pearl"
-      @getSelected="getSelectedPearl"
-    />
   </div>
 </template>
 
@@ -126,28 +130,48 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.tea-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-  .stepper {
-    margin: 20px 0;
-    span {
-      display: inline-block;
-      padding: 5px 10px;
-      background-color: #6fdbff;
-      border-radius: 20px;
-      color: #fff;
-      cursor: pointer;
-      font-size: 14px;
-      line-height: 20px;
-      width: 80px;
-      text-align: center;
-      &:not(:last-of-type) {
-        margin-right: 5px;
+  .container {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    .tea-container {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      .cup-wrapper {
+        padding: 10px 40px;
+      }
+      .option-wrapper {
+        padding: 10px 20px;
+        flex-basis: 300px;
+        width: 300px;
+        height: 200px;
+        margin: 0 20px;
+        box-shadow: 15px 20px 0 4px rgba(0,0,0,0.1);
+        border-radius: 10px;
+        background-color: var(--naples-yellow);
       }
     }
+    .stepper {
+        margin: 20px 0;
+        span {
+          display: inline-block;
+          padding: 5px 10px;
+          background-color: #6fdbff;
+          border-radius: 20px;
+          color: #fff;
+          cursor: pointer;
+          font-size: 14px;
+          line-height: 20px;
+          width: 80px;
+          text-align: center;
+          &:not(:last-of-type) {
+            margin-right: 5px;
+          }
+        }
+      }
   }
 </style>
