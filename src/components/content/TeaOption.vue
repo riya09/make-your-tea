@@ -67,6 +67,7 @@ export default {
     width: inherit;
     height: inherit;
     text-align: center;
+    margin-top: 10px;
     ul {
       list-style: none;
       margin: 10px 0;

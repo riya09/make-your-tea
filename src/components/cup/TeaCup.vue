@@ -1,75 +1,77 @@
 <template>
-  <svg width="344" height="372" viewBox="0 0 344 372" fill="none">
-    <g>
-      <rect
-        ref="rect"
-        x="0"
-        width="350"
-        height="372"
-        clip-path="url(#clip-cup)"
-        fill="url(#stroke-color)"
-      />
-      <rect
-        ref="rect-flavor"
-        x="0"
-        width="350"
-        height="372"
-        clip-path="url(#clip-cup)"
-        fill="url(#tea-flavor)"
-      />
-      <path
-        d="M0 58H47M344 58H294M294 58L267 370H76L47 58M294 58H47"
-        stroke="url(#stroke-color)"
-        stroke-width="8"
-      />
-      <!-- dynamic stroke gradient of tea cup -->
-      <defs>
-        <linearGradient id="stroke-color" x1="172" y1="0" x2="172" y2="344">
-          <stop :stop-color="cupFill.stop1" />
-          <stop offset="1" :stop-color="cupFill.stop2" />
-        </linearGradient>
-      </defs>
-      <!---->
-      <!--dynamic gradient of tea flavor-->
-      <defs>
-        <linearGradient
-          id="tea-flavor"
-          x1="195"
-          y1="0"
-          x2="195"
-          y2="273"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop :stop-color="flavorColor.stop1" stop-opacity="0" />
-          <stop
-            offset="1"
-            :stop-color="flavorColor.stop2"
-            stop-opacity="0.56"
-          />
-        </linearGradient>
-      </defs>
-      <!---->
-      <!--clip path of cup-->
-      <defs>
-        <clipPath id="clip-cup">
-          <path d="M0 58H47M344 58H294M294 58L267 370H76L47 58M294 58H47" />
-        </clipPath>
-      </defs>
-      <!---->
-      <!--pearls-->
-      <g v-if="pearl === 'add'">
-        <circle cx="100" cy="352" r="15" fill="#595756" />
-        <circle cx="150" cy="350" r="15" fill="#595756" />
-        <circle cx="125" cy="330" r="15" fill="#595756" />
-        <circle cx="220" cy="345" r="15" fill="#595756" />
-        <circle cx="185" cy="350" r="15" fill="#595756" />
-        <circle cx="170" cy="315" r="15" fill="#595756" />
-        <circle cx="235" cy="320" r="15" fill="#595756" />
-        <circle cx="255" cy="350" r="15" fill="#595756" />
+  <transition name="slide-in" appear>
+    <svg width="344" height="372" viewBox="0 0 344 372" fill="none">
+      <g>
+        <rect
+          ref="rect"
+          x="0"
+          width="350"
+          height="372"
+          clip-path="url(#clip-cup)"
+          fill="url(#stroke-color)"
+        />
+        <rect
+          ref="rect-flavor"
+          x="0"
+          width="350"
+          height="372"
+          clip-path="url(#clip-cup)"
+          fill="url(#tea-flavor)"
+        />
+        <path
+          d="M0 58H47M344 58H294M294 58L267 370H76L47 58M294 58H47"
+          stroke="url(#stroke-color)"
+          stroke-width="8"
+        />
+        <!-- dynamic stroke gradient of tea cup -->
+        <defs>
+          <linearGradient id="stroke-color" x1="172" y1="0" x2="172" y2="344">
+            <stop :stop-color="cupFill.stop1" />
+            <stop offset="1" :stop-color="cupFill.stop2" />
+          </linearGradient>
+        </defs>
+        <!---->
+        <!--dynamic gradient of tea flavor-->
+        <defs>
+          <linearGradient
+            id="tea-flavor"
+            x1="195"
+            y1="0"
+            x2="195"
+            y2="273"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop :stop-color="flavorColor.stop1" stop-opacity="0" />
+            <stop
+              offset="1"
+              :stop-color="flavorColor.stop2"
+              stop-opacity="0.56"
+            />
+          </linearGradient>
+        </defs>
+        <!---->
+        <!--clip path of cup-->
+        <defs>
+          <clipPath id="clip-cup">
+            <path d="M0 58H47M344 58H294M294 58L267 370H76L47 58M294 58H47" />
+          </clipPath>
+        </defs>
+        <!---->
+        <!--pearls-->
+        <g v-if="pearl === 'add'">
+          <circle cx="100" cy="352" r="15" fill="#595756" />
+          <circle cx="150" cy="350" r="15" fill="#595756" />
+          <circle cx="125" cy="330" r="15" fill="#595756" />
+          <circle cx="220" cy="345" r="15" fill="#595756" />
+          <circle cx="185" cy="350" r="15" fill="#595756" />
+          <circle cx="170" cy="315" r="15" fill="#595756" />
+          <circle cx="235" cy="320" r="15" fill="#595756" />
+          <circle cx="255" cy="350" r="15" fill="#595756" />
+        </g>
       </g>
-    </g>
-    <path d="M268 1L217 234" stroke="#8FCCE7" stroke-width="8" />
-  </svg>
+      <path d="M268 1L217 234" stroke="#8FCCE7" stroke-width="8" />
+    </svg>
+  </transition>
 </template>
 
 
@@ -170,5 +172,11 @@ svg {
   100% {
     transform: translate(0, -4px);
   }
+}
+.slide-in-enter-active {
+  transition: transform 0.6s ease-out;
+}
+.slide-in-enter {
+  transform: translateX(-100px);
 }
 </style>

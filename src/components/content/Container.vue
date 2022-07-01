@@ -8,29 +8,34 @@
           :pearl="pearl" />
       </div>
       <div class="option-wrapper">
-        <TeaOption
-          v-if="step === 1"
-          header-text="Select tea"
-          :options="teaOptions"
-          :chosen-option="teaType"
-          alignment="column"
-          @getSelected="getSelectedTea"
-        />
-        <TeaOption
-          v-if="step === 2"
-          header-text="Select flavor"
-          :options="teaFlavors"
-          :chosen-option="teaFlavor"
-          @getSelected="getSelectedFlavor"
-        />
-        <TeaOption
-          v-if="step === 3"
-          header-text="Want pearls?"
-          alignment="column"
-          :options="teaPearls"
-          :chosen-option="pearl"
-          @getSelected="getSelectedPearl"
-        />
+        <transition name="slide-up" mode="out-in" appear>
+          <TeaOption
+            v-if="step === 1"
+            header-text="Select tea"
+            :options="teaOptions"
+            :chosen-option="teaType"
+            :key="1"
+            alignment="column"
+            @getSelected="getSelectedTea"
+          />
+          <TeaOption
+            v-if="step === 2"
+            header-text="Select flavor"
+            :options="teaFlavors"
+            :chosen-option="teaFlavor"
+            :key="2"
+            @getSelected="getSelectedFlavor"
+          />
+          <TeaOption
+            v-if="step === 3"
+            header-text="Want pearls?"
+            alignment="column"
+            :options="teaPearls"
+            :chosen-option="pearl"
+            :key="3"
+            @getSelected="getSelectedPearl"
+          />
+        </transition>
       </div>
     </div>
   </div>
@@ -153,6 +158,7 @@ export default {
         box-shadow: 15px 20px 0 4px rgba(0,0,0,0.1);
         border-radius: 10px;
         background-color: var(--naples-yellow);
+        overflow: hidden;
       }
     }
     .stepper {
@@ -173,5 +179,18 @@ export default {
           }
         }
       }
+  }
+  .slide-up-enter-active,
+  .slide-up-leave-active {
+    transition: all 0.4s ease-out;
+  }
+  .slide-up-enter {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+  .slide-up-leave-to {
+    opacity: 0;
+    transform: translateY(-50%);
+    transition-delay: 0.8s;
   }
 </style>
