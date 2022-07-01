@@ -1,6 +1,6 @@
 <template>
   <transition name="slide-in" appear>
-    <svg width="344" height="372" viewBox="0 0 344 372" fill="none">
+    <svg width="344" height="372" viewBox="0 0 344 380" fill="none">
       <g>
         <rect
           ref="rect"
@@ -19,7 +19,7 @@
           fill="url(#tea-flavor)"
         />
         <path
-          d="M0 58H47M344 58H294M294 58L267 370H76L47 58M294 58H47"
+          d="M0 2H47M344 2H294M294 2L268.01 360.086C267.441 367.928 260.912 374 253.049 374H89.8762C82.044 374 75.5303 367.974 74.9215 360.166L47 2M294 2H47"
           stroke="url(#stroke-color)"
           stroke-width="8"
         />
@@ -53,7 +53,7 @@
         <!--clip path of cup-->
         <defs>
           <clipPath id="clip-cup">
-            <path d="M0 58H47M344 58H294M294 58L267 370H76L47 58M294 58H47" />
+            <path d="M0 2H47M344 2H294M294 2L268.01 360.086C267.441 367.928 260.912 374 253.049 374H89.8762C82.044 374 75.5303 367.974 74.9215 360.166L47 2M294 2H47" />
           </clipPath>
         </defs>
         <!---->
@@ -69,7 +69,6 @@
           <circle cx="255" cy="350" r="15" fill="#595756" />
         </g>
       </g>
-      <path d="M268 1L217 234" stroke="#8FCCE7" stroke-width="8" />
     </svg>
   </transition>
 </template>
@@ -150,7 +149,7 @@ export default {
 
 <style lang="scss" scoped>
 svg {
-  width: 200px;
+  width: 220px;
   height: auto;
   rect {
     y: 372;
