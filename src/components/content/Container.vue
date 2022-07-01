@@ -36,6 +36,24 @@
             @getSelected="getSelectedPearl"
           />
         </transition>
+        <div class="stepper" v-if="teaType && step <= 3">
+          <transition-group name="fade" tag="div" class="stepper">
+            <span
+              v-if="stepper[step - 2]"
+              :key="step-2"
+              class="step prev"
+              @click="step = step - 1">
+              {{ stepper[step - 2] }}
+            </span>
+            <span
+              v-if="stepper[step]"
+              :key="step + 1"
+              class="step next"
+              @click="step = step + 1">
+              {{ stepper[step] }}
+            </span>
+          </transition-group>
+        </div>
       </div>
     </div>
   </div>
@@ -103,6 +121,7 @@ export default {
           text: "No Pearls",
         },
       ],
+      stepper: ['Tea', 'Flavor', 'Pearl'],
     };
   },
   methods: {
@@ -153,35 +172,54 @@ export default {
         padding: 10px 20px;
         flex-basis: 300px;
         width: 300px;
-        height: 200px;
+        height: 240px;
         margin: 0 20px;
         box-shadow: 15px 20px 0 4px rgba(0,0,0,0.1);
         border-radius: 10px;
         background-color: var(--naples-yellow);
         overflow: hidden;
-      }
-    }
+        position: relative;
+        transition: transform 0.6s ease-out;
+        transition-delay: 0.8s;
     .stepper {
-        margin: 20px 0;
+          margin: 5px 0;
+          position: absolute;
+          left: 0;
+          bottom: 10px;
+          width: 100%;
+          div {
+            display: flex;
+            position: relative;
         span {
-          display: inline-block;
           padding: 5px 10px;
-          background-color: #6fdbff;
-          border-radius: 20px;
-          color: #fff;
+              color: var(--frost);
           cursor: pointer;
-          font-size: 14px;
+              font-size: 12px;
+              font-weight: 600;
           line-height: 20px;
-          width: 80px;
-          text-align: center;
-          &:not(:last-of-type) {
-            margin-right: 5px;
+              flex: 1 1 0;
+              position: absolute;
+              &.prev {
+                text-align: left;
+                left: 0;
+                &:before {
+                  content: '<';
+                }
+              }
+              &.next {
+                text-align: right;
+                right: 0;
+                &:after {
+                  content: '>';
+                }
+              }
+            }
+          }
           }
         }
       }
   }
-  .slide-up-enter-active,
-  .slide-up-leave-active {
+  .slide-up-enter-active, .slide-up-leave-active {
     transition: all 0.4s ease-out;
   }
   .slide-up-enter {
@@ -191,6 +229,12 @@ export default {
   .slide-up-leave-to {
     opacity: 0;
     transform: translateY(-50%);
-    transition-delay: 0.8s;
+    transition-delay: 0.6s;
+  }
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 0.4s ease-out;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
   }
 </style>

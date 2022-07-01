@@ -65,7 +65,7 @@ export default {
 <style lang="scss" scoped>
   .option-container {
     width: inherit;
-    height: inherit;
+    height: auto;
     text-align: center;
     margin-top: 10px;
     ul {
