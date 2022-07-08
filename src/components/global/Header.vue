@@ -11,9 +11,9 @@
   top: 0;
   padding: 5px 10px;
   text-align: center;
-  background: hsla(219, 40%, 55%, 0.8);
+  background: var(--frost);
   h1 {
-    color: #fff;
+    color: var(--white);
     margin: 0;
     font-size: 32px;
     font-family: 'Lobster', cursive;
