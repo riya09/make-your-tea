@@ -9,6 +9,7 @@
           height="372"
           clip-path="url(#clip-cup)"
           fill="url(#stroke-color)"
+          :fill-opacity="this.tea ? 1 : 0"
         />
         <rect
           ref="rect-flavor"
@@ -17,6 +18,7 @@
           height="372"
           clip-path="url(#clip-cup)"
           fill="url(#tea-flavor)"
+          :fill-opacity="this.flavor ? 1 : 0"
         />
         <path
           d="M0 2H47M344 2H294M294 2L268.01 360.086C267.441 367.928 260.912 374 253.049 374H89.8762C82.044 374 75.5303 367.974 74.9215 360.166L47 2M294 2H47"
@@ -134,12 +136,12 @@ export default {
   },
   watch: {
     tea(val, newVal) {
-      if (val !== newVal) {
+      if (val !== newVal && val) {
         this.toggleDomClass("rect", "fill");
       }
     },
     flavor(val, newVal) {
-      if (val !== newVal) {
+      if (val !== newVal && val) {
         this.toggleDomClass("rect-flavor", "fill");
       }
     },

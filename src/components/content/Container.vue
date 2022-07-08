@@ -35,6 +35,16 @@
             :key="3"
             @getSelected="getSelectedPearl"
           />
+          <div
+            v-if="step > 3"
+            class="instruction">
+            <h2>Your tea is ready!</h2>
+            <div class="cup-icon" @click="reset">
+              <svg width="40" height="40" viewBox="0 0 110 107">
+                <path d="M11.6 15.9723L30.0002 100.489C30.7006 103.706 33.5478 106 36.84 106H75.3777C78.7221 106 81.5993 103.634 82.2457 100.353L98.8667 15.9723M11.6 7.17647H105.776C108.091 7.17647 109.534 9.68865 108.367 11.6886L106.735 14.4844C106.197 15.4058 105.211 15.9723 104.144 15.9723H5.85603C4.78925 15.9723 3.80272 15.4058 3.26501 14.4844L1.63334 11.6886C0.466138 9.68865 1.90871 7.17647 4.22436 7.17647H11.6ZM11.6 7.17647L14.3119 3.18845C15.2428 1.81945 16.791 1 18.4465 1H91.7111C93.2786 1 94.7554 1.73514 95.7004 2.98583L98.8667 7.17647" stroke="#F0EEE7" stroke-width="2"/>
+              </svg>
+            </div>
+          </div>
         </transition>
         <div class="stepper" v-if="teaType && step <= 3">
           <transition-group name="fade" tag="div" class="stepper">
@@ -149,6 +159,12 @@ export default {
       this.pearl = pearl;
       this.step += 1;
     },
+    reset() {
+      this.teaType = ''
+      this.teaFlavor = ''
+      this.pearl = ''
+      this.step = 1
+    }
   },
 };
 </script>
@@ -181,7 +197,7 @@ export default {
         position: relative;
         transition: transform 0.6s ease-out;
         transition-delay: 0.8s;
-    .stepper {
+        .stepper {
           margin: 5px 0;
           position: absolute;
           left: 0;
@@ -190,13 +206,13 @@ export default {
           div {
             display: flex;
             position: relative;
-        span {
-          padding: 5px 10px;
+            span {
+              padding: 5px 10px;
               color: var(--frost);
-          cursor: pointer;
+              cursor: pointer;
               font-size: 12px;
               font-weight: 600;
-          line-height: 20px;
+              line-height: 20px;
               flex: 1 1 0;
               position: absolute;
               &.prev {
@@ -215,9 +231,29 @@ export default {
               }
             }
           }
+        }
+      }
+      .instruction {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .cup-icon {
+          padding: 15px;
+          border: 2px solid var(--lotion);
+          border-radius: 50px;
+          background: var(--cornflower);
+          margin: 10px 0;
+          cursor: pointer;
+          svg {
+            path {
+              fill: var(--lotion);
+            }
           }
         }
       }
+    }
   }
   .slide-up-enter-active, .slide-up-leave-active {
     transition: all 0.4s ease-out;
