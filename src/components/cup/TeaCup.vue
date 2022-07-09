@@ -161,17 +161,26 @@ svg {
     }
   }
   circle {
-    animation: float 0.8s ease-in alternate infinite;
     @for $i from 1 through 8 {
       &:nth-of-type(#{$i}) {
-        animation-delay: 200ms * $i;
+        animation: appear 0.6s ease-out 0s forwards, float 0.8s 200ms * $i ease-in alternate infinite;
       }
     }
   }
 }
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translate(0, -50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0)
+  }
+}
 @keyframes float {
   100% {
-    transform: translate(0, -4px);
+    transform: translate(0, -3px);
   }
 }
 .slide-in-enter-active {
