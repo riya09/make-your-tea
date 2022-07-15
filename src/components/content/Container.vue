@@ -190,7 +190,7 @@ export default {
         width: 300px;
         height: 240px;
         margin: 0 20px;
-        box-shadow: 15px 20px 0 4px rgba(0,0,0,0.1);
+        box-shadow: 10px 10px 2px 4px rgba(0,0,0,0.1);
         border-radius: 10px;
         background-color: var(--naples-yellow);
         overflow: hidden;
