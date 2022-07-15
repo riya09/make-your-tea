@@ -273,4 +273,21 @@ export default {
   .fade-enter, .fade-leave-to {
     opacity: 0;
   }
+  @media screen and (max-width: 800px) {
+    .container {
+      .tea-container {
+        flex-direction: column;
+        .cup-wrapper {
+          padding: 10px;
+        }
+        .option-wrapper {
+          flex-basis: 100%;
+          width: 100%;
+          max-width: 220px;
+          min-height: 240px;
+          margin: 10px;
+        }
+      }
+    }
+  }
 </style>
